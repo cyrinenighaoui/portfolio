@@ -747,6 +747,8 @@ section {
   border-radius: 20px;
   box-shadow: 0 20px 40px var(--shadow-color);
   display: block;
+  /* CORRIGEZ cette ligne : */
+  margin-top: -80px; /* Utilisez margin-top au lieu de top */
 }
 
 /* CONTENU À DROITE */
