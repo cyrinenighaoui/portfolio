@@ -833,6 +833,53 @@ section {
 }
 
 /* Mobiles */
+/* AFFICHAGE RESPONSIVE - CORRECTION NAV */
+@media screen and (max-width: 768px) {
+  #desktop-nav {
+    display: none !important;
+  }
+  
+  #hamburger-nav {
+    display: flex !important;
+  }
+}
+
+/* Afficher le menu hamburger sur mobile */
+#hamburger-nav {
+  display: none;
+}
+/* CORRECTION BOUTONS PROJETS */
+.project-card .btn-container {
+  display: flex;
+  flex-direction: column; /* Change en colonne sur petit écran */
+  gap: 1rem;
+  margin: 1.5rem;
+  padding: 0;
+}
+
+.project-btn {
+  width: 100%;
+  justify-content: center;
+  margin: 0 !important;
+}
+
+/* Sur écrans plus grands, revenir en ligne */
+@media screen and (min-width: 768px) {
+  .project-card .btn-container {
+    flex-direction: row;
+  }
+  
+  .project-btn {
+    width: auto;
+  }
+}
+
+/* S'assurer que le conteneur du projet ne dépasse pas */
+.color-container {
+  overflow: hidden !important;
+  margin: 0 auto;
+  max-width: 100%;
+}
 @media screen and (max-width: 768px) {
   #about .about-containers {
     flex-direction: column;
@@ -2210,4 +2257,32 @@ footer {
   #about .details-container {
     padding: 1.5rem;
   }
+}
+
+
+
+/* FORCER LES CONTAINERS À NE PAS DÉPASSER */
+section {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 1rem;
+  overflow-x: hidden;
+}
+
+/* CORRECTION SPÉCIFIQUE POUR LES PROJETS */
+#projects .about-containers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.details-container.color-container {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
 }
