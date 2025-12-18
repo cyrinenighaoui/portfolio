@@ -4,24 +4,44 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
+    <title>Cyrine Nighaoui | AI & CS Portfolio</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- Background Animated Elements -->
+    <div class="bg-animation">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-3"></div>
+      <div class="circle circle-4"></div>
+      <div class="circle circle-5"></div>
+    </div>
+    
+    <!-- Navigation -->
     <nav id="desktop-nav">
-      <div class="logo">Cyrine Nighaoui</div>
+      <div class="logo">Cyrine<span class="logo-highlight">Nighaoui</span></div>
       <div>
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </div>
+      <div class="theme-toggle">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </div>
     </nav>
+    
     <nav id="hamburger-nav">
-      <div class="logo">Cyrine Nighaoui</div>
+      <div class="logo">Cyrine<span class="logo-highlight">Nighaoui</span></div>
       <div class="hamburger-menu">
         <div class="hamburger-icon" onclick="toggleMenu()">
           <span></span>
@@ -33,263 +53,517 @@
           <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
           <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
           <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+          <li><div class="theme-toggle-mobile">
+            <i class="fas fa-moon" id="theme-icon-mobile"></i>
+            <span>Dark Mode</span>
+          </div></li>
         </div>
       </div>
     </nav>
+    
+    <!-- Profile Section -->
     <section id="profile">
       <div class="section__pic-container">
-        <img class="my-image" src="./assets/profil.jpg" alt="John Doe profile picture" />
+        <div class="image-wrapper">
+          <img class="my-image" src="./assets/profil.jpg" alt="Cyrine Nighaoui profile picture" />
+          <div class="image-glow"></div>
+        </div>
       </div>
       <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Cyrine Nighaoui</h1>
-        <p class="section__text__p2">  Computer Science  Student <br>
-        </p>
+        <p class="section__text__p1 animated-text">Hello, I'm</p>
+        <h1 class="title title-gradient">Cyrine Nighaoui</h1>
+        <div class="typewriter-container">
+          <p class="section__text__p2 typewriter">Computer Science Student</p>
+        </div>
+        <p class="section__text__p3">AI Enthusiast & Future Innovator</p>
         <div class="btn-container">
           <button
-            class="btn btn-color-2"
+            class="btn btn-color-2 btn-glow"
             onclick="window.open('./assets/resume-example.pdf')"
           >
-            Download CV
+            <span>Download CV</span>
+            <i class="fas fa-download"></i>
           </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
+          <button class="btn btn-color-1 btn-pulse" onclick="location.href='./#contact'">
+            <span>Contact Info</span>
+            <i class="fas fa-arrow-right"></i>
           </button>
         </div>
         <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/cyrine-nighaoui/'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/cyrinenighaoui'"
-          />
+          <div class="social-icon-wrapper">
+            <img
+              src="./assets/linkedin.png"
+              alt="My LinkedIn profile"
+              class="icon social-icon"
+              onclick="location.href='https://www.linkedin.com/in/cyrine-nighaoui/'"
+            />
+            <div class="social-tooltip">LinkedIn</div>
+          </div>
+          <div class="social-icon-wrapper">
+            <img
+              src="./assets/github.png"
+              alt="My Github profile"
+              class="icon social-icon"
+              onclick="location.href='https://github.com/cyrinenighaoui'"
+            />
+            <div class="social-tooltip">GitHub</div>
+          </div>
+          <div class="social-icon-wrapper">
+            <i class="fas fa-envelope icon social-icon" onclick="location.href='mailto:cycynighaoui@gmail.com'"></i>
+            <div class="social-tooltip">Email</div>
+          </div>
         </div>
       </div>
+      <div class="scroll-indicator">
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+        <div class="arrow-down"></div>
+      </div>
     </section>
+    
+    <!-- About Section -->
     <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
+      <p class="section__text__p1 section-tag">Get To Know More</p>
+      <h1 class="title title-underline">About Me</h1>
       <div class="section-container">
         <div class="section__pic-container">
-          <img
-            src="./assets/profile2 (1).png"
-            alt="Profile picture"
-            class="about-pic"
-          />
+          <div class="about-image-container">
+            <img
+              src="./assets/profile2 (1).png"
+              alt="Profile picture"
+              class="about-pic"
+            />
+            <div class="floating-shapes">
+              <div class="shape shape-1"></div>
+              <div class="shape shape-2"></div>
+              <div class="shape shape-3"></div>
+            </div>
+          </div>
         </div>
         <div class="about-details-container">
           <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-            <h3>Experience</h3>
-            <p>
-              5-month Internship <br />
-              Mental Health Platform (Harmonia) – Medianet
-            </p>
+            <div class="details-container card-hover">
+              <div class="card-icon">
+                <i class="fas fa-briefcase"></i>
+              </div>
+              <h3>Experience</h3>
+              <p>
+                5-month Internship <br />
+                Mental Health Platform (Harmonia) – Medianet
+              </p>
+              <div class="card-highlight"></div>
             </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
+            <div class="details-container card-hover">
+              <div class="card-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
               <h3>Education</h3>
               <p>
                 Bachelor's in Business Computing – IHEC Carthage <br />
                 Master 1 in Computer Science – Université Lyon 2
               </p>
+              <div class="card-highlight"></div>
             </div>
           </div>
           <div class="text-container">
               <p>
-                I am a Computer Science student with a strong background in business computing and
-                a growing interest in artificial intelligence and data-driven systems.
-                During my 5-month internship at Medianet, I contributed to the development of
-                <strong>Harmonia</strong>, a mental health platform focused on user well-being and digital support solutions.
-                <br /><br />
-                Beyond academics, I am actively involved in student leadership and served as
-                <strong>President of the HEC Finance Academy</strong> during the 2024–2025 term,
-                where I led initiatives at the intersection of finance, technology, and innovation.
-                <br /><br />
+                Computer Science student with a background in business computing,
+                passionate about AI and data-driven systems.
+                Interned at Medianet, contributing to <strong>Harmonia</strong>,
+                a mental health platform focused on digital well-being.
               </p>
+              <p>
+                Former <strong>President of the HEC Finance Academy</strong> (2024–2025),
+                leading initiatives at the intersection of finance, technology, and innovation.
+              </p>
+            <div class="skills-tags">
+              <span class="skill-tag">AI & ML</span>
+              <span class="skill-tag">Web Development</span>
+              <span class="skill-tag">Data Science</span>
+              <span class="skill-tag">Leadership</span>
+            </div>
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
+      <div class="arrow-down-container">
+        <div class="arrow-down-animated" onclick="location.href='./#experience'">
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
     </section>
 
+    <!-- Experience Section -->
     <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
+      <p class="section__text__p1 section-tag">Explore My</p>
+      <h1 class="title title-underline">Experience</h1>
 
       <div class="experience-details-container">
         <div class="about-containers">
 
           <!-- Frontend -->
-          <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Development</h2>
-            <div class="article-container">
-              <article><img src="./assets/checkmark.png" class="icon" /><div><h3>HTML</h3><p>Experienced</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" /><div><h3>CSS</h3><p>Experienced</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" /><div><h3>JavaScript</h3><p>Intermediate</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" /><div><h3>TypeScript</h3><p>Intermediate</p></div></article>
+          <div class="details-container experience-card card-hover">
+            <div class="card-header">
+              <i class="fas fa-code card-main-icon"></i>
+              <h2 class="experience-sub-title">Frontend Development</h2>
             </div>
+            <div class="article-container">
+              <article class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-html5"></i>
+                </div>
+                <div class="skill-details">
+                  <h3>HTML</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-css3-alt"></i>
+                </div>
+                <div class="skill-details">
+                  <h3>CSS</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-js"></i>
+                </div>
+                <div class="skill-details">
+                  <h3>JavaScript</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-react"></i>
+                </div>
+                <div class="skill-details">
+                  <h3>TypeScript</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+            </div>
+            <div class="card-glow"></div>
           </div>
 
           <!-- AI & Data -->
-          <div class="details-container">
-            <h2 class="experience-sub-title">AI & Data</h2>
-            <div class="article-container">
-              <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Machine Learning</h3><p>Intermediate</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Deep Learning (CNN, RNN)</h3><p>Intermediate</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" /><div><h3>LLMs & RAG</h3><p>Intermediate</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Python (Pandas, NumPy)</h3><p>Advanced</p></div></article>
+          <div class="details-container experience-card card-hover">
+            <div class="card-header">
+              <i class="fas fa-brain card-main-icon"></i>
+              <h2 class="experience-sub-title">AI & Data</h2>
             </div>
+            <div class="article-container">
+              <article class="skill-item">
+                <div class="skill-icon">
+                  <i class="fas fa-robot"></i>
+                </div>
+                <div class="skill-details">
+                  <h3>Machine Learning</h3>
+                  <p>Intermediate</p>
+                </div>
+                
+              </article>
+              <article class="skill-item">
+                <div class="skill-icon">
+                  <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="skill-details">
+                  <h3>Deep Learning</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article class="skill-item">
+                <div class="skill-icon">
+                  <i class="fas fa-comment-dots"></i>
+                </div>
+                <div class="skill-details">
+                  <h3>LLMs & RAG</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-python"></i>
+                </div>
+                <div class="skill-details">
+                  <h3>Python</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+            </div>
+            <div class="card-glow"></div>
           </div>
 
           <!-- Software & Web -->
-          <div class="details-container">
-            <h2 class="experience-sub-title">Software & Web Development</h2>
-            <div class="article-container">
-              <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Next.js / Angular</h3><p>Intermediate</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Django (Python)</h3><p>Intermediate</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" /><div><h3>SQL / PostgreSQL</h3><p>Intermediate</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Git & UML</h3><p>Intermediate</p></div></article>
+          <div class="details-container experience-card card-hover">
+            <div class="card-header">
+              <i class="fas fa-laptop-code card-main-icon"></i>
+              <h2 class="experience-sub-title">Software & Web</h2>
             </div>
+            <div class="article-container">
+              <article class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-angular"></i>
+                </div>
+                <div class="skill-details">
+                  <h3>Next.js / Angular</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-python"></i>
+                </div>
+                <div class="skill-details">
+                  <h3>Django (Python)</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article class="skill-item">
+                <div class="skill-icon">
+                  <i class="fas fa-database"></i>
+                </div>
+                <div class="skill-details">
+                  <h3>SQL / PostgreSQL</h3>
+                  <p>Intermediate</p>
+                </div>
+                
+              </article>
+              <article class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-git-alt"></i>
+                </div>
+                <div class="skill-details">
+                  <h3>Git & UML</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+            </div>
+            <div class="card-glow"></div>
           </div>
 
         </div>
       </div>
 
-      <img src="./assets/arrow.png" class="icon arrow" onclick="location.href='./#projects'" />
+      <div class="arrow-down-container">
+        <div class="arrow-down-animated" onclick="location.href='./#projects'">
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
+      <p class="section__text__p1 section-tag">Browse My Recent</p>
+      <h1 class="title title-underline">Projects</h1>
       <div class="experience-details-container">
         <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
+          <!-- Project 1 -->
+          <div class="details-container color-container project-card">
+            <div class="project-image-container">
+              <div class="project-tag">AI Project</div>
               <img
                 src="./assets/project-1.png"
                 alt="Project 1"
                 class="project-img"
               />
+              <div class="project-overlay">
+                <h3>View Details</h3>
+                <i class="fas fa-external-link-alt"></i>
+              </div>
             </div>
-            <h2 class="experience-sub-title project-title">Project One</h2>
+            <h2 class="experience-sub-title project-title">Harmonia AI Platform</h2>
+            <p class="project-description">Mental health platform with AI-driven recommendations and support system.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Django</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">PostgreSQL</span>
+            </div>
             <div class="btn-container">
               <button
-                class="btn btn-color-2 project-btn"
+                class="btn btn-color-2 project-btn btn-glow"
                 onclick="location.href='https://github.com/'"
               >
-                Github
+                <i class="fab fa-github"></i> Github
               </button>
               <button
-                class="btn btn-color-2 project-btn"
+                class="btn btn-color-1 project-btn btn-pulse"
                 onclick="location.href='https://github.com/'"
               >
-                Live Demo
+                <i class="fas fa-external-link-alt"></i> Live Demo
               </button>
             </div>
+            <div class="project-glow"></div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
+          
+          <!-- Project 2 -->
+          <div class="details-container color-container project-card">
+            <div class="project-image-container">
+              <div class="project-tag">Web App</div>
               <img
                 src="./assets/project-2.png"
                 alt="Project 2"
                 class="project-img"
               />
+              <div class="project-overlay">
+                <h3>View Details</h3>
+                <i class="fas fa-external-link-alt"></i>
+              </div>
             </div>
-            <h2 class="experience-sub-title project-title">Project Two</h2>
+            <h2 class="experience-sub-title project-title">Finance Academy Portal</h2>
+            <p class="project-description">Interactive platform for finance students with learning resources and tools.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">CSS3</span>
+            </div>
             <div class="btn-container">
               <button
-                class="btn btn-color-2 project-btn"
+                class="btn btn-color-2 project-btn btn-glow"
                 onclick="location.href='https://github.com/'"
               >
-                Github
+                <i class="fab fa-github"></i> Github
               </button>
               <button
-                class="btn btn-color-2 project-btn"
+                class="btn btn-color-1 project-btn btn-pulse"
                 onclick="location.href='https://github.com/'"
               >
-                Live Demo
+                <i class="fas fa-external-link-alt"></i> Live Demo
               </button>
             </div>
+            <div class="project-glow"></div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
+          
+          <!-- Project 3 -->
+          <div class="details-container color-container project-card">
+            <div class="project-image-container">
+              <div class="project-tag">Data Science</div>
               <img
                 src="./assets/project-3.png"
                 alt="Project 3"
                 class="project-img"
               />
+              <div class="project-overlay">
+                <h3>View Details</h3>
+                <i class="fas fa-external-link-alt"></i>
+              </div>
             </div>
-            <h2 class="experience-sub-title project-title">Project Three</h2>
+            <h2 class="experience-sub-title project-title">Predictive Analytics Tool</h2>
+            <p class="project-description">Machine learning model for business forecasting and data visualization.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">Plotly</span>
+            </div>
             <div class="btn-container">
               <button
-                class="btn btn-color-2 project-btn"
+                class="btn btn-color-2 project-btn btn-glow"
                 onclick="location.href='https://github.com/'"
               >
-                Github
+                <i class="fab fa-github"></i> Github
               </button>
               <button
-                class="btn btn-color-2 project-btn"
+                class="btn btn-color-1 project-btn btn-pulse"
                 onclick="location.href='https://github.com/'"
               >
-                Live Demo
+                <i class="fas fa-external-link-alt"></i> Live Demo
               </button>
             </div>
+            <div class="project-glow"></div>
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
-    </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:cycynighaoui@gmail.com">cycynighaoui@gmail.com</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://www.linkedin.com/in/cyrine-nighaoui/">LinkedIn</a></p>
+      
+      <div class="view-more">
+        <button class="btn btn-color-1 btn-large" onclick="location.href='https://github.com/cyrinenighaoui'">
+          <span>View All Projects</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+      
+      <div class="arrow-down-container">
+        <div class="arrow-down-animated" onclick="location.href='./#contact'">
+          <i class="fas fa-chevron-down"></i>
         </div>
       </div>
     </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+      <p class="section__text__p1 section-tag">Get in Touch</p>
+      <h1 class="title title-underline">Contact Me</h1>
+      <div class="contact-container">
+        <div class="contact-info-upper-container">
+          <div class="contact-info-container contact-card">
+            <div class="contact-icon-container">
+              <i class="fas fa-envelope contact-main-icon"></i>
+            </div>
+            <h3>Email</h3>
+            <p><a href="mailto:cycynighaoui@gmail.com" class="contact-link">cycynighaoui@gmail.com</a></p>
+            <div class="contact-subtext">Response within 24 hours</div>
+          </div>
+          <div class="contact-info-container contact-card">
+            <div class="contact-icon-container">
+              <i class="fab fa-linkedin contact-main-icon"></i>
+            </div>
+            <h3>LinkedIn</h3>
+            <p><a href="https://www.linkedin.com/in/cyrine-nighaoui/" class="contact-link">Cyrine Nighaoui</a></p>
+            <div class="contact-subtext">Let's connect professionally</div>
+          </div>
+          <div class="contact-info-container contact-card">
+            <div class="contact-icon-container">
+              <i class="fab fa-github contact-main-icon"></i>
+            </div>
+            <h3>GitHub</h3>
+            <p><a href="https://github.com/cyrinenighaoui" class="contact-link">@cyrinenighaoui</a></p>
+            <div class="contact-subtext">Check out my projects</div>
+          </div>
+        </div>
+        
+        <div class="contact-form-container">
+          <h2>Send me a message</h2>
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <input type="text" id="name" placeholder="Your Name" required>
+              <div class="form-line"></div>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" placeholder="Your Email" required>
+              <div class="form-line"></div>
+            </div>
+            <div class="form-group">
+              <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+              <div class="form-line"></div>
+            </div>
+            <button type="submit" class="btn btn-color-1 btn-large">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="back-to-top">
+        <button class="btn-circle" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+          <i class="fas fa-arrow-up"></i>
+        </button>
+      </div>
+    </section>
+    
+    <!-- Footer -->
     <footer>
-      <nav>
-        <div class="nav-links-container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <h2>Cyrine<span class="logo-highlight">Nighaoui</span></h2>
+          <p>AI & Computer Science Student</p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
           <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
@@ -297,8 +571,27 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
-      </nav>
+        <div class="footer-social">
+          <h3>Connect With Me</h3>
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/cyrine-nighaoui/" class="social-icon-footer">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/cyrinenighaoui" class="social-icon-footer">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:cycynighaoui@gmail.com" class="social-icon-footer">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Cyrine Nighaoui. All rights reserved.</p>
+        <p>Designed with <i class="fas fa-heart heart-icon"></i> and code</p>
+      </div>
     </footer>
+    
     <script src="script.js"></script>
   </body>
 </html>
