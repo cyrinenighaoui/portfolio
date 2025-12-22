@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- FAVICON (optionnel mais recommandé) -->
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
-    <base href="/portfolio/">
 
   </head>
   <body>
@@ -45,22 +44,6 @@
     
     <nav id="hamburger-nav">
       <div class="logo">Cyrine<span class="logo-highlight">Nighaoui</span></div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-          <li><div class="theme-toggle-mobile">
-            <i class="fas fa-moon" id="theme-icon-mobile"></i>
-            <span>Dark Mode</span>
-          </div></li>
-        </div>
       </div>
     </nav>
     
@@ -117,12 +100,7 @@
           </div>
         </div>
       </div>
-      <div class="scroll-indicator">
-        <div class="mouse">
-          <div class="wheel"></div>
-        </div>
-        <div class="arrow-down"></div>
-      </div>
+ 
     </section>
     
     <!-- About Section -->
@@ -396,7 +374,7 @@
                 class="btn btn-color-1 project-btn btn-pulse"
                 onclick="location.href='https://github.com/'"
               >
-                <i class="fas fa-external-link-alt"></i> Live Demo
+                <i class="fas fa-external-link-alt demo-icon"></i> Live Demo
               </button>
             </div>
             <div class="project-glow"></div>
@@ -528,35 +506,7 @@
           </div>
         </div>
         
-        <div class="contact-form-container">
-          <h2>Send me a message</h2>
-          <form id="contact-form" class="contact-form">
-            <div class="form-group">
-              <input type="text" id="name" placeholder="Your Name" required>
-              <div class="form-line"></div>
-            </div>
-            <div class="form-group">
-              <input type="email" id="email" placeholder="Your Email" required>
-              <div class="form-line"></div>
-            </div>
-            <div class="form-group">
-              <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-              <div class="form-line"></div>
-            </div>
-            <button type="submit" class="btn btn-color-1 btn-large">
-              <span>Send Message</span>
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-        </div>
-      </div>
-      
-      <div class="back-to-top">
-        <button class="btn-circle" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-          <i class="fas fa-arrow-up"></i>
-        </button>
-      </div>
-    </section>
+          </section>
     
     <!-- Footer -->
     <footer>
