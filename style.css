@@ -160,10 +160,10 @@ nav {
 }
 
 .nav-links {
-  right: 0;
-  width: 100%;
-  padding: 1rem;
-  box-sizing: border-box;
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+  font-size: 1.2rem;
 }
 
 
