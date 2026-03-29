@@ -1,202 +1,202 @@
-// Toggle Hamburger Menu
+// ================================================
+// CYRINE NIGHAOUI — PORTFOLIO SCRIPT
+// ================================================
+
+// --- Custom Cursor ---
+const dot  = document.createElement('div');
+const ring = document.createElement('div');
+dot.className = 'cursor-dot';
+ring.className = 'cursor-ring';
+document.body.appendChild(dot);
+document.body.appendChild(ring);
+
+let mx = 0, my = 0, rx = 0, ry = 0;
+window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animateCursor() {
+  dot.style.left  = mx + 'px'; dot.style.top  = my + 'px';
+  rx += (mx - rx) * 0.12;     ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// --- Mobile Menu ---
 function toggleMenu() {
-  const menu = document.querySelector(".menu-links");
-  const icon = document.querySelector(".hamburger-icon");
-  menu.classList.toggle("open");
-  icon.classList.toggle("open");
+  const menu = document.getElementById('mobile-menu');
+  const btn  = document.querySelector('.hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
 }
 
-// Dark/Light Mode Toggle
-const themeToggle = document.getElementById("theme-icon");
-const themeToggleMobile = document.getElementById("theme-icon-mobile");
+// --- Typewriter ---
+const words = ['AI Engineer', 'CS Student', 'ML Enthusiast', 'Full-Stack Developer', 'Future Innovator'];
+let wi = 0, ci = 0, deleting = false;
+const tw = document.getElementById('typewriter');
 
-function toggleTheme() {
-  document.body.classList.toggle("dark-theme");
-  
-  // Update icon
-  if (document.body.classList.contains("dark-theme")) {
-    themeToggle.classList.remove("fa-moon");
-    themeToggle.classList.add("fa-sun");
-    
-    if (themeToggleMobile) {
-      themeToggleMobile.classList.remove("fa-moon");
-      themeToggleMobile.classList.add("fa-sun");
-    }
+function type() {
+  if (!tw) return;
+  const word = words[wi];
+  if (!deleting) {
+    tw.textContent = word.slice(0, ++ci);
+    if (ci === word.length) { deleting = true; setTimeout(type, 2000); return; }
+    setTimeout(type, 80);
   } else {
-    themeToggle.classList.remove("fa-sun");
-    themeToggle.classList.add("fa-moon");
-    
-    if (themeToggleMobile) {
-      themeToggleMobile.classList.remove("fa-sun");
-      themeToggleMobile.classList.add("fa-moon");
-    }
+    tw.textContent = word.slice(0, --ci);
+    if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; setTimeout(type, 400); return; }
+    setTimeout(type, 40);
   }
-  
-  // Save preference to localStorage
-  const isDarkMode = document.body.classList.contains("dark-theme");
-  localStorage.setItem("darkMode", isDarkMode);
 }
+type();
 
-themeToggle.addEventListener("click", toggleTheme);
-if (themeToggleMobile) {
-  themeToggleMobile.addEventListener("click", toggleTheme);
-}
+// --- Scroll Reveal ---
+const revealEls = document.querySelectorAll(
+  '.sec-header, .about-text, .about-cards, .info-card, .skill-block, .proj-item, .contact-left, .contact-right, .contact-item, .stat-card'
+);
+revealEls.forEach(el => el.classList.add('reveal'));
 
-// Check for saved theme preference
-window.addEventListener("DOMContentLoaded", () => {
-  const savedDarkMode = localStorage.getItem("darkMode") === "true";
-  if (savedDarkMode) {
-    document.body.classList.add("dark-theme");
-    themeToggle.classList.remove("fa-moon");
-    themeToggle.classList.add("fa-sun");
-    
-    if (themeToggleMobile) {
-      themeToggleMobile.classList.remove("fa-moon");
-      themeToggleMobile.classList.add("fa-sun");
+const io = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+revealEls.forEach(el => io.observe(el));
+
+// --- Active nav link on scroll ---
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--text)' : '';
+  });
+});
+
+// ================================================
+// NEURAL NETWORK ANIMATION
+// ================================================
+const canvas = document.getElementById('nn-canvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  const COLORS = ['#c9a84c', '#36d1dc', '#e8c97a', '#5ce1e6', '#a89fff'];
+  const LAYERS = [3, 5, 6, 5, 3];
+  let nodes = [], edges = [], activePulses = [], t = 0, lastPulse = 0;
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    build();
+  }
+
+  function build() {
+    nodes = []; edges = [];
+    const W = canvas.width, H = canvas.height;
+    const xs = LAYERS.map((_, i) => W * 0.1 + W * 0.8 * (i / (LAYERS.length - 1)));
+
+    LAYERS.forEach((cnt, li) => {
+      for (let ni = 0; ni < cnt; ni++) {
+        nodes.push({
+          x: xs[li],
+          y: H / 2 + (ni - (cnt - 1) / 2) * (H / (cnt + 2.5)),
+          r: li === 0 || li === LAYERS.length - 1 ? 5 : 4,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.5 + Math.random() * 0.5,
+          color: COLORS[li % COLORS.length],
+          fade: 0
+        });
+      }
+    });
+
+    let start = 0;
+    for (let li = 0; li < LAYERS.length - 1; li++) {
+      const next = start + LAYERS[li];
+      for (let a = start; a < start + LAYERS[li]; a++)
+        for (let b = next; b < next + LAYERS[li + 1]; b++)
+          edges.push({ from: a, to: b, phase: Math.random() * Math.PI * 2, speed: 0.3 + Math.random() * 0.4 });
+      start = next;
     }
   }
-});
 
-// Animate elements on scroll
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -100px 0px"
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("animate");
-      
-      // Add specific animations based on element type
-      if (entry.target.classList.contains("details-container")) {
-        entry.target.style.animationDelay = `${entry.target.dataset.delay || "0s"}`;
-      }
+  function pulse() {
+    const from = Math.floor(Math.random() * LAYERS[0]);
+    const path = [from]; let cur = from;
+    for (let li = 0; li < LAYERS.length - 1; li++) {
+      const cands = edges.filter(e => e.from === cur);
+      if (!cands.length) break;
+      const e = cands[Math.floor(Math.random() * cands.length)];
+      path.push(e.to); cur = e.to;
     }
-  });
-}, observerOptions);
-
-// Observe all elements to animate
-document.querySelectorAll(".details-container, .project-card, .skill-item").forEach((el, index) => {
-  el.dataset.delay = `${index * 0.1}s`;
-  observer.observe(el);
-});
-
-// Form submission
-const contactForm = document.getElementById("contact-form");
-if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    
-    // Get form values
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-    
-    // Simple validation
-    if (!name || !email || !message) {
-      alert("Please fill in all fields.");
-      return;
-    }
-    
-    // Here you would normally send the form data to a server
-    // For now, just show a success message
-    alert(`Thank you ${name}! Your message has been sent. I'll get back to you soon at ${email}.`);
-    
-    // Reset form
-    contactForm.reset();
-    
-    // Add visual feedback
-    const submitBtn = contactForm.querySelector("button[type='submit']");
-    const originalText = submitBtn.innerHTML;
-    
-    submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-    submitBtn.style.background = "linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%)";
-    
-    setTimeout(() => {
-      submitBtn.innerHTML = originalText;
-      submitBtn.style.background = "";
-    }, 3000);
-  });
-}
-
-// Add floating animation to project cards on mouse move
-document.querySelectorAll(".project-card").forEach(card => {
-  card.addEventListener("mousemove", (e) => {
-    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-    
-    card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-  });
-  
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "rotateY(0deg) rotateX(0deg)";
-    card.style.transition = "all 0.5s ease";
-  });
-  
-  card.addEventListener("mouseenter", () => {
-    card.style.transition = "none";
-  });
-});
-
-// Add scroll progress indicator
-window.addEventListener("scroll", () => {
-  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
-  
-  // Update scroll indicator if exists
-  const scrollIndicator = document.querySelector(".scroll-progress");
-  if (scrollIndicator) {
-    scrollIndicator.style.width = scrolled + "%";
+    activePulses.push({ path, step: 0, prog: 0, spd: 0.02 + Math.random() * 0.015, color: COLORS[Math.floor(Math.random() * COLORS.length)] });
   }
-});
 
-// Initialize typewriter effect for multiple texts
-const typewriterTexts = [
-  "Computer Science Student",
-  "AI Enthusiast",
-  "Web Developer",
-  "Future Innovator"
-];
+  function draw(ts) {
+    if (ts - lastPulse > 800) { pulse(); lastPulse = ts; }
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
 
-let currentTextIndex = 0;
-const typewriterElement = document.querySelector(".typewriter");
+    // Edges
+    edges.forEach(e => {
+      const a = nodes[e.from], b = nodes[e.to];
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = `rgba(201,168,76,${0.06 + 0.03 * Math.sin(t * e.speed + e.phase)})`;
+      ctx.lineWidth = 0.6; ctx.stroke();
+    });
 
-if (typewriterElement) {
-  function typeWriterEffect() {
-    const currentText = typewriterTexts[currentTextIndex];
-    let charIndex = 0;
-    
-    // Clear current text
-    typewriterElement.textContent = "";
-    typewriterElement.style.borderRight = "3px solid var(--primary-color)";
-    
-    function typeChar() {
-      if (charIndex < currentText.length) {
-        typewriterElement.textContent += currentText.charAt(charIndex);
-        charIndex++;
-        setTimeout(typeChar, 100);
-      } else {
-        // Pause before deleting
-        setTimeout(deleteText, 2000);
+    // Pulses
+    activePulses = activePulses.filter(p => {
+      p.prog += p.spd;
+      if (p.prog >= 1) {
+        if (p.step < p.path.length - 2) { p.step++; p.prog = 0; }
+        else { nodes[p.path[p.path.length - 1]].fade = 1; return false; }
       }
-    }
-    
-    function deleteText() {
-      if (typewriterElement.textContent.length > 0) {
-        typewriterElement.textContent = typewriterElement.textContent.slice(0, -1);
-        setTimeout(deleteText, 50);
-      } else {
-        // Move to next text
-        currentTextIndex = (currentTextIndex + 1) % typewriterTexts.length;
-        setTimeout(typeWriterEffect, 500);
+      const A = nodes[p.path[p.step]], B = nodes[p.path[p.step + 1]];
+      const px = A.x + (B.x - A.x) * p.prog, py = A.y + (B.y - A.y) * p.prog;
+
+      ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(px, py);
+      ctx.strokeStyle = p.color + 'bb'; ctx.lineWidth = 1.2; ctx.stroke();
+
+      const g = ctx.createRadialGradient(px, py, 0, px, py, 10);
+      g.addColorStop(0, p.color + '66'); g.addColorStop(1, 'transparent');
+      ctx.beginPath(); ctx.arc(px, py, 10, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
+      ctx.beginPath(); ctx.arc(px, py, 2.5, 0, Math.PI * 2); ctx.fillStyle = p.color; ctx.fill();
+      return true;
+    });
+
+    // Nodes
+    nodes.forEach(n => {
+      const p = 0.5 + 0.5 * Math.sin(t * n.speed + n.phase);
+      const r = n.r + p * 1.2;
+
+      if (n.fade > 0) {
+        const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * 5);
+        g.addColorStop(0, n.color + Math.round(n.fade * 100).toString(16).padStart(2,'0'));
+        g.addColorStop(1, 'transparent');
+        ctx.beginPath(); ctx.arc(n.x, n.y, r * 5, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
+        n.fade = Math.max(0, n.fade - 0.018);
       }
-    }
-    
-    typeChar();
+
+      const g2 = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * 2.5);
+      g2.addColorStop(0, n.color + '33'); g2.addColorStop(1, 'transparent');
+      ctx.beginPath(); ctx.arc(n.x, n.y, r * 2.5, 0, Math.PI * 2); ctx.fillStyle = g2; ctx.fill();
+
+      ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+      const g3 = ctx.createRadialGradient(n.x - r * 0.3, n.y - r * 0.3, 0, n.x, n.y, r);
+      g3.addColorStop(0, '#ffffff88'); g3.addColorStop(1, n.color);
+      ctx.fillStyle = g3; ctx.fill();
+
+      ctx.beginPath(); ctx.arc(n.x, n.y, r + 1.5, 0, Math.PI * 2);
+      ctx.strokeStyle = n.color + '44'; ctx.lineWidth = 0.8; ctx.stroke();
+    });
+
+    t += 0.014;
+    requestAnimationFrame(draw);
   }
-  
-  // Start the typewriter effect
-  typeWriterEffect();
+
+  resize();
+  window.addEventListener('resize', resize);
+  requestAnimationFrame(draw);
 }
