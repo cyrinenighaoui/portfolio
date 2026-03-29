@@ -573,3 +573,170 @@ footer { border-top: 1px solid var(--border); padding: 1.8rem var(--px); }
 @media (min-resolution: 192dpi) {
   body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 }
+/* ================================================
+   LEADERSHIP SECTION (NEW CLEAN VERSION)
+   ================================================ */
+
+#leadership {
+  background: var(--bg);
+}
+
+/* ================= SPLIT LAYOUT ================= */
+.lead-split {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* ================= TEXT ================= */
+.lead-text h3 {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.lead-text p {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 520px;
+  margin-bottom: 2rem;
+}
+
+/* ================= IMAGE ================= */
+.lead-image {
+  display: flex;
+  justify-content: center;
+}
+
+.lead-image img {
+  width: 100%;
+  max-width: 320px;
+
+  max-height: 380px;   /* 🔥 AJOUTE ÇA */
+  object-fit: cover;
+
+  border-radius: var(--r2);
+}
+.lead-image:hover img {
+  transform: scale(1.05);
+}
+
+/* ================= STATS ================= */
+.lead-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  
+}
+
+.lead-stats span {
+  display: block;
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--gold);
+}
+
+.lead-stats p {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ================= HIGHLIGHTS ================= */
+.lead-highlights {
+  display: flex;
+  gap: 1rem;
+}
+
+/* CARDS */
+.lead-card {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 1.4rem;
+  border-radius: var(--r2);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.lead-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.lead-card h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
+.lead-card span {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ================= STORY ================= */
+.lead-story {
+  text-align: center;
+  max-width: 600px;
+  margin: 3rem auto 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+@media (max-width: 900px) {
+
+  /* STACK */
+  .lead-split {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  /* IMAGE */
+  .lead-image img {
+    max-width: 240px;
+      max-height: 300px;   /* 🔥 AJOUTE ÇA */
+
+    margin: 0 auto;
+  }
+
+  /* TEXT */
+  .lead-text h3 {
+    font-size: 1.6rem;
+  }
+
+  .lead-text p {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.9rem;
+  }
+
+  /* STATS */
+  .lead-stats {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .lead-stats span {
+    font-size: 1.6rem;
+  }
+
+  /* CARDS */
+  .lead-highlights {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .lead-card {
+    padding: 1.2rem;
+  }
+
+  /* STORY */
+  .lead-story {
+    padding: 0 1rem;
+    font-size: 0.9rem;
+  }
+}
