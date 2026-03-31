@@ -205,3 +205,4 @@ if (canvas) {
   window.addEventListener('resize', resize);
   requestAnimationFrame(draw);
 }
+
