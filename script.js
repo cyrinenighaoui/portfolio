@@ -28,8 +28,12 @@ function toggleMenu() {
   btn.classList.toggle('open');
 }
 
-// --- Typewriter ---
-const words = ['AI Engineer', 'CS Student', 'ML Enthusiast', 'Full-Stack Developer', 'Future Innovator'];
+const words = [
+  'Étudiante en IA & Data',
+  'Développeuse Full-Stack',
+  'Machine Learning',
+  'Spécialisée en Intelligence Artificielle'
+];
 let wi = 0, ci = 0, deleting = false;
 const tw = document.getElementById('typewriter');
 
